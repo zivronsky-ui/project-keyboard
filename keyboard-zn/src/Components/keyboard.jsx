@@ -3,12 +3,13 @@ import { useState } from "react";
 // import "./App.css";
 
 function Keyboard(props) {
-  console.log(props);
-  if (!props.index) return;
+  // console.log("props:" + props);
 
   const [string, setString] = useState("nvbv");
+  if (!props.index) return;
+
   const keyboards = [
-    { language: "עברית", buttons: ["כ", "ח"] },
+    { language: "עברית", buttons: ["כ", "ח", " "] },
     { language: "english", buttons: ["t", "d"] },
     { language: "emojis", buttons: [",", "(:"] },
   ];
@@ -28,10 +29,11 @@ function Keyboard(props) {
   }
 
   const r = buildBtns(keyboards[props.index - 1].buttons);
+  console.log(props);
 
   return (
     <div>
-      {string}
+      <div style={{ fontSize: props.fontSize }}> {string}</div>
 
       <div>{r}</div>
     </div>
