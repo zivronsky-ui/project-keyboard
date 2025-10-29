@@ -4,13 +4,14 @@ import { useState } from "react";
 
 function Keyboard(props) {
   console.log(props);
+  const [string, setString] = useState("");
+
   if (!props.index) return;
 
-  const [string, setString] = useState("nvbv");
   const keyboards = [
-    { language: "עברית", buttons: ["כ", "ח"] },
-    { language: "english", buttons: ["t", "d"] },
-    { language: "emojis", buttons: [",", "(:"] },
+    { language: "עברית", buttons: ["כ", "ח", " "] },
+    { language: "english", buttons: ["t", "d", " "] },
+    { language: "emojis", buttons: [",", "(:", " "] },
   ];
 
   function buildBtns(letters) {
@@ -31,7 +32,7 @@ function Keyboard(props) {
 
   return (
     <div>
-      {string}
+      <h1>{string}</h1>
 
       <div>{r}</div>
     </div>

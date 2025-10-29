@@ -1,6 +1,7 @@
 import "./App.css";
 import Keyboard from "./Components/keyboard";
 import Language from "./Components/language";
+import Color from "./Components/colors";
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <Keyboard />
       <br />
       <Language />
+      <br />
+      <Color />
     </div>
   );
 }

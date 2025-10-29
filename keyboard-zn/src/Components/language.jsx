@@ -11,6 +11,7 @@ function Language() {
   return (
     <div>
       {currentkeyboard}
+      <br />
       <button onClick={() => changeLanguage(1)}>עברית</button>
       <button onClick={() => changeLanguage(2)}>english</button>
       <button onClick={() => changeLanguage(3)}>{": )"}</button>
