@@ -1,9 +1,15 @@
-import { useState } from 'react'
-
-import './App.css'
+import "./App.css";
+import Keyboard from "./Components/keyboard";
+import Language from "./Components/language";
 
 function App() {
-  return <Keyboard />;
+  return (
+    <div>
+      <Keyboard />
+      <br />
+      <Language />
+    </div>
+  );
 }
 
 export default App;
