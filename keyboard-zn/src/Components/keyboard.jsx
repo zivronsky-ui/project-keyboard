@@ -1,12 +1,16 @@
 import { useState } from "react";
+
 // import "./App.css";
 
-function Keyboard() {
+function Keyboard(props) {
+  console.log(props);
+  if (!props.index) return;
+
   const [string, setString] = useState("nvbv");
   const keyboards = [
-    { language: "עברית", buttons: ["t", "d"] },
+    { language: "עברית", buttons: ["כ", "ח"] },
     { language: "english", buttons: ["t", "d"] },
-    { language: "emojis", buttons: ["t", "d"] },
+    { language: "emojis", buttons: [",", "(:"] },
   ];
 
   function buildBtns(letters) {
@@ -22,7 +26,8 @@ function Keyboard() {
   function displayletter(letter) {
     setString(string + letter);
   }
-  const r = buildBtns(keyboards[0].buttons);
+
+  const r = buildBtns(keyboards[props.index - 1].buttons);
 
   return (
     <div>
