@@ -1,11 +1,10 @@
 import { useState } from "react";
-
-// import "./App.css";
+import LetterSpan from "./letterspan";
 
 function Keyboard(props) {
-  // console.log("props:" + props);
-
   const [string, setString] = useState("");
+  const [letters, setLetters] = useState([]);
+
   if (!props.index) return;
 
   const keyboards = [
@@ -170,45 +169,61 @@ function Keyboard(props) {
     },
   ];
 
-  function buildBtns(letters) {
-    let something = letters.map((letter) => {
-      return (
-        <button className="letterbtn" onClick={() => displayletter(letter)}>
-          {letter}
-        </button>
-      );
-    });
-    return something;
-  }
-  function displayletter(letter) {
-    setString(string + letter);
-    return (
-      <span style={{ color: props.color, fontSize: props.fontSize }}>
-        {letter}
-      </span>
-    );
+  // function buildBtns(letters) {
+  //   let something = letters.map((letter) => {
+  //     return (
+  //       <button className="letterbtn" onClick={() => displayletterspan(letter)}>
+  //         {letter}
+  //       </button>
+  //     );
+  //   });
+  //   return something;
+  // }
+
+  // function updateString(letter) {
+  //   setString(string + letter);
+  // }
+
+  function handleClick(letter) {
+    // store both letter + current style
+    setLetters((prev) => [
+      ...prev,
+      { char: letter, color: props.color, fontSize: props.fontSize },
+    ]);
   }
 
-  const r = buildBtns(keyboards[props.index - 1].buttons);
-  console.log(props);
   function deleteAll() {
-    setString("");
+    setLetters([]);
   }
+  function addSpace() {
+    setLetters((prev) => [...prev, { char: " " }]);
+  }
+  // function deleteAll() {
+  //   setString("");
+  // }
+  // function displayletterspan(letter) {
+  //   console.log(letter);
+  //   console.log(props);
+
+  //   return <LetterSpan r={r} props={props} />;
+  // }
+  const currentKeyboard = keyboards[props.index - 1];
+  // const r = keyboards[props.index - 1].buttons;
 
   return (
     <div>
-      <div> {() => displayletter}</div>
+      <LetterSpan letters={letters} />
 
-      <div>{r}</div>
+      <div>
+        {currentKeyboard.buttons.map((letter) => (
+          <button key={letter} onClick={() => handleClick(letter)}>
+            {letter}
+          </button>
+        ))}
+      </div>
+
       <button onClick={deleteAll}>מחק הכל</button>
-      <button
-        onClick={() => {
-          setString(string + " ");
-        }}
-      >
-        {" "}
-        רווח
-      </button>
+      <button onClick={addSpace}>רווח</button>
     </div>
   );
 }
