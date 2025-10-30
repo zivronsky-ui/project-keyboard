@@ -6,6 +6,7 @@ function Keyboard(props) {
   // console.log("props:" + props);
 
   const [string, setString] = useState("");
+
   if (!props.index) return;
 
   const keyboards = [
@@ -136,8 +137,7 @@ function Keyboard(props) {
         "😙",
         "😚",
         "😋",
-        "😛", // setString(string + letter);
-
+        "😛",
         "😝",
         "😜",
         "🤪",
@@ -189,7 +189,7 @@ function Keyboard(props) {
     );
   }
 
-  const r = buildBtns(keyboards[props.index - 1].buttons);
+  const currentKeboard = buildBtns(keyboards[props.index - 1].buttons);
   console.log(props);
   function deleteAll() {
     setString("");
@@ -199,7 +199,7 @@ function Keyboard(props) {
     <div>
       <div> {() => displayletter}</div>
 
-      <div>{r}</div>
+      <div>{currentKeboard}</div>
       <button onClick={deleteAll}>מחק הכל</button>
       <button
         onClick={() => {
