@@ -194,8 +194,11 @@ function Keyboard(props) {
   function deleteAll() {
     setLetters([]);
   }
+  function deleteLast() {
+    setLetters((prev) => prev.slice(0, -1));
+  }
   function addSpace() {
-    setLetters((prev) => [...prev, { char: " " }]);
+    setLetters((prev) => [...prev, { char: "  " }]);
   }
   // function deleteAll() {
   //   setString("");
@@ -223,6 +226,7 @@ function Keyboard(props) {
 
       <button onClick={deleteAll}>מחק הכל</button>
       <button onClick={addSpace}>רווח</button>
+      <button onClick={deleteLast}>מחק</button>
     </div>
   );
 }
